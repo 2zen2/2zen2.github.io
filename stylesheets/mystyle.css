@@ -27,8 +27,28 @@ wrap {
 	transform: translateX(-50%);
 	background: skyblue;
 	color: white;
-	width: 22vw;
+	width: 169px;
 	border-radius: 7px;
 	padding-top: 2px;
 	padding-bottom: 7px;
+}
+
+#center-box h1{
+	font-family: Papyrus;
+}
+
+@media only screen and (max-device-width: 480px) {
+	body{
+		background: url("../images/Malpaca.jpg") no-repeat;
+		background-size: 100%;
+	}
+	
+	#wrap{
+		width: 400px;
+	}
+	
+	#center-box{
+		width: 100%;		
+	}
+	
 }

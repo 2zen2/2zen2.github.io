@@ -55,5 +55,14 @@ var QuadraticCalculator = React.createClass({
 
 ReactDOM.render(
   <QuadraticCalculator />,
-  document.getElementById('container')
+  document.getElementById('quadratic')
 );
+
+
+var Background = React.createClass({
+	render: function(){
+		return(
+
+		);
+	}
+});

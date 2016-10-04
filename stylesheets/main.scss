@@ -1,0 +1,154 @@
+@mixin transform($prop){
+    -webkit-transform: $prop !important;
+    -moz-transform: $prop !important;
+    transform: $prop !important;
+    -ms-transform: $prop !important;
+}
+
+@mixin transitionOpacity($duration){
+	-webkit-transition: opacity $duration;
+	-moz-transition: opacity $duration;
+	transition: opacity $duration;
+	-ms-transition: opacity $duration;
+}
+
+/* One Page Scroll */
+body, html {
+  margin: 0;
+  overflow: hidden;
+  @include transitionOpacity(400ms);
+}
+
+body, .onepage-wrapper, html {
+  display: block;
+  position: static;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.onepage-wrapper {
+  width: 100%;
+  height: 100%;
+  display: block;
+  position: relative;
+  padding: 0;
+  -webkit-transform-style: preserve-3d;
+  .ops-section {
+    width: 100%;
+    height: 100%;
+    position: relative;
+  }
+}
+
+.onepage-pagination {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  z-index: 5;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  li {
+    padding: 0;
+    text-align: center;
+    a {
+      padding: 10px;
+      width: 4px;
+      height: 4px;
+      display: block;
+      &:before {
+        content: '';
+        position: absolute;
+        width: 4px;
+        height: 4px;
+        background: rgba(0, 0, 0, 0.85);
+        border-radius: 10px;
+        -webkit-border-radius: 10px;
+        -moz-border-radius: 10px;
+      }
+      &.active:before {
+        width: 10px;
+        height: 10px;
+        background: none;
+        border: 1px solid black;
+        margin-top: -4px;
+        left: 8px;
+      }
+    }
+  }
+}
+
+.disabled-onepage-scroll {
+  overflow: auto;
+  .wrapper {
+    overflow: auto;
+  }
+  .onepage-wrapper {
+    .ops-section {
+      position: relative !important;
+      top: auto !important;
+    }
+
+    @include transform(none);
+
+    min-height: 100%;
+  }
+  .onepage-pagination {
+    display: none;
+  }
+}
+
+body.disabled-onepage-scroll, .disabled-onepage-scroll .onepage-wrapper, html {
+  position: inherit;
+}
+
+#page1 {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+
+	font-size: 11em;
+	font-family: parley;
+
+	h1{
+		transition: all 0.5s ease;
+		padding: 33px;
+		color: gray;
+		text-shadow: 0 1px 0 #ccc, 0 2px 0 #c9c9c9, 0 3px 0 #bbb, 0 4px 0 #b9b9b9, 0 5px 0 #aaa, 0 6px 1px rgba(0,0,0,.1), 0 0 5px rgba(0,0,0,.1), 0 1px 3px rgba(0,0,0,.3), 0 3px 5px rgba(0,0,0,.2), 0 5px 10px rgba(0,0,0,.25), 0 10px 10px rgba(0,0,0,.2), 0 20px 20px rgba(0,0,0,.15);
+
+		&:hover{
+			transform: translateY(4px);
+			text-shadow: 0 1px 0 #ccc,  0 2px 0 #c9c9c9,  0 6px 1px rgba(0,0,0,.1), 0 0 5px rgba(0,0,0,.1), 0 1px 3px rgba(0,0,0,.3);
+		}
+	}
+}
+
+#page2 {
+	background: url("../images/bg2.jpg") center; 
+}
+
+#page3 {
+	background: url("../images/alpaca2.jpg") center; 
+}
+
+#page4 {
+	background: url("../images/Malpaca2.jpg") 0 50%;
+}
+
+.ops-section {
+	animation: animatedBackground 20s linear infinite alternate;
+}
+
+@font-face {
+	font-family: parley;
+	src: url('fonts/parley bold.eot');
+	src: local('☺'), url('fonts/parley bold.woff') format('woff'), url('fonts/parley bold.ttf') format('truetype'), url('fonts/parley bold.svg') format('svg');
+}
+
+
+@keyframes animatedBackground {
+	from { background-position: 0 50%;}
+	to { background-position: 100% 50%;}
+}

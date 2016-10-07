@@ -62,6 +62,11 @@ onePageScroll(".main", {
    }
 
    /*todo pic expand*/
+   document.getElementById("z").onclick = function(){loadImage()};
+}
+
+function loadImage() {
+   alert("Z");
 }
 
 function createParticles() {
